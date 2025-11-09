@@ -1,10 +1,10 @@
-const BASE_URL = "http://localhost:8000"; // Change if needed
+const BASE_URL = "http://localhost:8080"; // Change if needed
 
 /** Send quiz data to the backend */
 export const submitQuiz = async (quizData) => {
     try {
         console.log(JSON.stringify(quizData))
-        const response = await fetch(`${BASE_URL}/quiz-app/api/v1/qna/question`, {
+        const response = await fetch(`${BASE_URL}/api/v1/qna/question`, {
             method: "POST",
             headers: { "Content-Type": "application/json", "Authorization": `bearer ${localStorage.getItem("access_token")}` },
             body: JSON.stringify(quizData),
@@ -27,7 +27,7 @@ export const submitQuiz = async (quizData) => {
 export const submitAns = async (ansData) => {
     try {
         console.log(JSON.stringify(ansData))
-        const response = await fetch(`${BASE_URL}/quiz-app/api/v1/qna/answer`, {
+        const response = await fetch(`${BASE_URL}/api/v1/qna/answer`, {
             method: "POST",
             headers: {"Content-Type": "application/json", "Authorization": `bearer ${localStorage.getItem("access_token")}`},
             body: JSON.stringify(ansData)
@@ -48,7 +48,7 @@ export const submitAns = async (ansData) => {
 /** Fetch all questionnaires */
 export const fetchAllQuestionnaires = async () => {
     try {
-        const response = await fetch(`${BASE_URL}/quiz-app/api/v1/qna/all-questions`,{
+        const response = await fetch(`${BASE_URL}/api/v1/qna/all-questions`,{
             method: 'GET',
             headers: {"Authorization": `bearer ${localStorage.getItem("access_token")}` },
         });
@@ -66,7 +66,7 @@ export const fetchAllQuestionnaires = async () => {
 export const fetchQuestionnaireById = async (id) => {
     try{
         const response = await fetch(
-            `${BASE_URL}/quiz-app/api/v1/qna/question/${id}`, {
+            `${BASE_URL}/api/v1/qna/question/${id}`, {
                 method: 'GET',
                 headers: {"Authorization": `bearer ${localStorage.getItem("access_token")}` },
             }
@@ -85,7 +85,7 @@ export const fetchQuestionnaireById = async (id) => {
 
 export const fetchQuizByCode = async (code) => {
     try {
-        const response = await fetch(`${BASE_URL}/quiz-app/api/v1/qna/quiz_code/${code}`, {
+        const response = await fetch(`${BASE_URL}/api/v1/qna/quiz_code/${code}`, {
             method: 'GET',
             headers: {"Authorization": `bearer ${localStorage.getItem("access_token")}` },
         });
@@ -99,7 +99,7 @@ export const fetchQuizByCode = async (code) => {
 
 
 export const deleteQuestionnaireById = async (id) => {
-    const response = await fetch(`${BASE_URL}/quiz-app/api/v1/qna/question/${id}`, {
+    const response = await fetch(`${BASE_URL}/api/v1/qna/question/${id}`, {
         method: "DELETE",
         headers: {"Authorization": `bearer ${localStorage.getItem("access_token")}` },
     });
@@ -113,7 +113,7 @@ export const deleteQuestionnaireById = async (id) => {
 
 
 export const fetchAnswers = async () => {
-    const response = await fetch(`${BASE_URL}/quiz-app/api/v1/qna/answer`, {
+    const response = await fetch(`${BASE_URL}/api/v1/qna/answer`, {
         method: "GET",
         headers: {"Authorization": `bearer ${localStorage.getItem("access_token")}` },
     });
@@ -129,7 +129,7 @@ export const fetchAnswers = async () => {
 export const fetchUserSubmissions = async () => {
     try {
         const response = await fetch(
-            `${BASE_URL}/quiz-app/api/v1/qna/question`,
+            `${BASE_URL}/api/v1/qna/question`,
             {
                 method: 'GET',
                 headers: {
@@ -153,7 +153,7 @@ export const fetchUserSubmissions = async () => {
 export const fetchResultById = async (id) => {
     try {
         const response = await fetch(
-            `${BASE_URL}/quiz-app/api/v1/qna/quiz_result/${id}`,
+            `${BASE_URL}/api/v1/qna/quiz_result/${id}`,
             {
                 method: 'GET',
                 headers: {

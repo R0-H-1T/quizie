@@ -10,25 +10,25 @@ import axios from 'axios';
 export const signup = function (data){
     return axios.create(
         {
-            baseURL: 'http://localhost:8000',
+            baseURL: 'http://localhost:8080',
             headers: { "Content-Type": "application/x-www-form-urlencoded" }
         }
-    ).post('/quiz-app/api/v1/auth/signup', data);
+    ).post('/api/v1/auth/signup', data);
 } 
 
 export const signin = function (data) {
     return axios.create(
         {
-            baseURL: 'http://localhost:8000',
+            baseURL: 'http://localhost:8080',
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
         }
-    ).post('/quiz-app/api/v1/auth/signin', data);
+    ).post('/api/v1/auth/signin', data);
 }
 
 export const signout = function () {
     return axios.create(
         {
-            baseURL: 'http://localhost:8000',
+            baseURL: 'http://localhost:8080',
             // headers: { "Content-Type": "application/x-www-form-urlencoded" }
         }
     ).post('/signout');
